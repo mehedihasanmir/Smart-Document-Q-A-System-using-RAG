@@ -59,7 +59,7 @@ git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 
 # Create a virtual environment
-python -m venv venv
+python3.11 -m venv venv
 
 # Activate the environment
 # Windows:
