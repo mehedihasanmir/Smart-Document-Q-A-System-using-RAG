@@ -73,13 +73,7 @@ python -m venv venv
 
 c. Activate the environment:
 
-# On Windows
 .\venv\Scripts\activate
-
-# On macOS/Linux
-source venv/bin/activate
-
-d. Install dependencies:
 
 pip install -r requirements.txt
 
@@ -130,7 +124,7 @@ docker run -p 8501:8501 -e GEMINI_API_KEY="YOUR_GEMINI_API_KEY_HERE" streamlit-r
 
 The application will be available at http://localhost:8501.
 
-2. Running the FastAPI Server with Docker
+2. Running the FastAPI Server 
 a. Build the Docker image:
 
 docker build -f Dockerfile.fastapi -t fastapi-rag-api .
