@@ -51,6 +51,19 @@ The core purpose is to ground a Large Language Model (LLM) on a specific knowled
 
 ---
 
+### ⚙️ Configure Tesseract Path (Windows only)
+
+If you're using Windows, you may need to explicitly specify the Tesseract executable path in your Python code:
+
+```python
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+```
+
+Or, add the Tesseract installation directory to your system's environment variables so this is done automatically.
+
+---
+
 ### 🔧 Local Setup
 
 ```bash
@@ -59,7 +72,7 @@ git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 
 # Create a virtual environment
-python3.11 -m venv venv
+python -m venv venv
 
 # Activate the environment
 # Windows:
@@ -171,6 +184,7 @@ docker run -p 8501:8501 -e GEMINI_API_KEY="YOUR_GEMINI_API_KEY_HERE" mehedi88/my
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
+
 
 ## 🙏 Acknowledgments
 
