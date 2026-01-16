@@ -1,5 +1,3 @@
-"""Document processing module for extracting text from various file formats."""
-
 import io
 import sqlite3
 import csv

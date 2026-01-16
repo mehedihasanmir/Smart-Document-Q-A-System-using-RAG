@@ -1,5 +1,3 @@
-"""RAG (Retrieval-Augmented Generation) handler using OpenAI and Pinecone."""
-
 import logging
 from typing import List, Optional, Dict, Any
 import os
@@ -74,7 +72,7 @@ class RAGHandler:
                 logger.info(f"Creating new Pinecone index: {settings.PINECONE_INDEX_NAME}")
                 self.pinecone_client.create_index(
                     name=settings.PINECONE_INDEX_NAME,
-                    dimension=1536,  # OpenAI text-embedding-3-small dimension
+                    dimension=1536, 
                     metric="cosine",
                     spec=ServerlessSpec(
                         cloud="aws",
@@ -270,7 +268,7 @@ Question: {question}"""
                         "content": content
                     }
                 ],
-                temperature=0.7,
+                temperature=0.5,
                 max_tokens=1000
             )
             

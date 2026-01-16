@@ -1,5 +1,3 @@
-"""FastAPI application for Smart Document Q&A System using RAG."""
-
 import os
 import io
 import base64
@@ -20,7 +18,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# --- FastAPI Application Setup ---
 app = FastAPI(
     title="Smart Document Q&A API",
     description="REST API for document-based Q&A using OpenAI and Pinecone",
@@ -62,7 +59,7 @@ async def root() -> dict:
     return {
         "message": "Welcome to Smart Document Q&A API v2.0",
         "documentation": "/docs",
-        "health_status": "✅ Running"
+        "health_status": "Running"
     }
 
 
@@ -78,7 +75,7 @@ async def health_check() -> dict:
         chunks_count = len(handler.text_chunks_store)
         
         return {
-            "status": "✅ Healthy",
+            "status": "Healthy",
             "api_version": "2.0.0",
             "knowledge_base": {
                 "chunks_stored": chunks_count,
@@ -88,7 +85,7 @@ async def health_check() -> dict:
     except Exception as e:
         logger.error(f"Health check failed: {str(e)}")
         return {
-            "status": "❌ Unhealthy",
+            "status": "Unhealthy",
             "error": str(e)
         }
 

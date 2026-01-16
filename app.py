@@ -21,7 +21,6 @@ logger = logging.getLogger(__name__)
 # --- Streamlit Page Configuration ---
 st.set_page_config(
     page_title="Smart Document Q&A System",
-    page_icon="📄",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -40,7 +39,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("📄 Smart Document Q&A System")
+st.title("Smart Document Q&A System")
 st.markdown("### Powered by OpenAI and Pinecone")
 st.write("Upload documents and ask questions to get intelligent answers based on the content.")
 
@@ -126,7 +125,7 @@ col1, col2 = st.columns(2)
 
 # --- Column 1: Document Upload ---
 with col1:
-    st.header("📤 Step 1: Upload Documents")
+    st.header("Upload Documents")
     
     uploaded_file = st.file_uploader(
         "Select a document to upload",
@@ -135,25 +134,25 @@ with col1:
     )
 
     if uploaded_file is not None:
-        with st.spinner('⏳ Processing document... Please wait.'):
+        with st.spinner('Processing document... Please wait.'):
             try:
                 text, chunks_added = process_uploaded_file(uploaded_file)
-                st.success(f"✅ Document '{uploaded_file.name}' processed successfully!")
-                st.info(f"📊 Added {chunks_added} chunks to the knowledge base")
+                st.success(f"Document '{uploaded_file.name}' processed successfully!")
+                st.info(f"Added {chunks_added} chunks to the knowledge base")
                 
                 # Update session state
                 st.session_state.processed_count = len(rag_handler.text_chunks_store)
                 
             except ValueError as e:
-                st.error(f"❌ Error processing document: {str(e)}")
+                st.error(f"Error processing document: {str(e)}")
                 logger.error(f"File processing error: {str(e)}")
             except Exception as e:
-                st.error(f"❌ Unexpected error: {str(e)}")
+                st.error(f"Unexpected error: {str(e)}")
                 logger.error(f"Unexpected error during file processing: {str(e)}")
     
     # Display statistics
     st.divider()
-    st.subheader("📈 Knowledge Base Statistics")
+    st.subheader("Knowledge Base Statistics")
     col1_stat, col2_stat = st.columns(2)
     
     with col1_stat:
@@ -161,12 +160,12 @@ with col1:
         st.metric("Total Chunks", total_chunks)
     
     with col2_stat:
-        st.metric("Status", "✅ Ready" if total_chunks > 0 else "⏳ Waiting")
+        st.metric("Status", "Ready" if total_chunks > 0 else "⏳ Waiting")
 
 
 # --- Column 2: Query Section ---
 with col2:
-    st.header("❓ Step 2: Ask a Question")
+    st.header("Ask a Question")
     
     question_text = st.text_area(
         "Enter your question:",
@@ -176,21 +175,21 @@ with col2:
     )
     
     uploaded_image = st.file_uploader(
-        "📸 Add an image to your question (optional)",
+        "Add an image to your question (optional)",
         type=['jpg', 'jpeg', 'png'],
         help="Include an image if your question relates to visual content"
     )
 
-    if st.button("🔍 Get Answer", type="primary", use_container_width=True):
+    if st.button("Get Answer", type="primary", use_container_width=True):
         handler = st.session_state.rag_handler
         
         # Validation
         if not question_text.strip():
-            st.warning("⚠️ Please enter a question.")
+            st.warning("Please enter a question.")
         elif len(handler.text_chunks_store) == 0:
-            st.error("❌ Please upload and process at least one document first.")
+            st.error("Please upload and process at least one document first.")
         else:
-            with st.spinner("🤖 Finding the best answer..."):
+            with st.spinner("Finding the best answer..."):
                 try:
                     # Prepare image data if provided
                     image_b64 = None
@@ -212,15 +211,15 @@ with col2:
                     st.divider()
                     
                     if "error" in result:
-                        st.error(f"❌ Error: {result['error']}")
+                        st.error(f"Error: {result['error']}")
                         logger.error(f"RAG query error: {result['error']}")
                     else:
                         # Display results
-                        st.subheader("✅ Answer:")
+                        st.subheader("Answer:")
                         st.write(result.get("answer", "No answer found."))
                         
                         # Display context chunks
-                        with st.expander("📚 View Source Documents"):
+                        with st.expander("View Source Documents"):
                             chunks = result.get("context_chunks", [])
                             if chunks:
                                 for i, chunk in enumerate(chunks, 1):
@@ -233,7 +232,7 @@ with col2:
                         logger.info("Successfully generated answer")
                         
                 except Exception as e:
-                    st.error(f"❌ Unexpected error while generating answer: {str(e)}")
+                    st.error(f"Unexpected error while generating answer: {str(e)}")
                     logger.error(f"Unexpected error in get_answer: {str(e)}")
 
 # --- Footer ---

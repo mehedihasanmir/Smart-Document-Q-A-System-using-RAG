@@ -4,12 +4,12 @@ A professional-grade document question-answering system powered by OpenAI GPT-4 
 
 ## Features
 
-- 📄 **Multi-format Document Support**: PDF, DOCX, TXT, PNG, JPG, CSV, and SQLite databases
-- 🤖 **AI-Powered Answers**: Uses OpenAI GPT-4 Turbo for intelligent responses
-- 🔍 **Advanced Retrieval**: Pinecone vector database for efficient semantic search
-- 🖼️ **Multimodal Queries**: Ask questions with images for visual context
-- 📊 **Production-Ready**: Professional error handling, logging, and type hints
-- 🚀 **Dual Interface**: Both Streamlit UI and FastAPI REST endpoints
+- **Multi-format Document Support**: PDF, DOCX, TXT, PNG, JPG, CSV, and SQLite databases
+- **AI-Powered Answers**: Uses OpenAI GPT-4 Turbo for intelligent responses
+- **Advanced Retrieval**: Pinecone vector database for efficient semantic search
+- **Multimodal Queries**: Ask questions with images for visual context
+- **Production-Ready**: Professional error handling, logging, and type hints
+- **Dual Interface**: Both Streamlit UI and FastAPI REST endpoints
 
 ## Architecture
 
@@ -31,7 +31,7 @@ GPT-4 Answer Generation
 
 ## Prerequisites
 
-- Python 3.8+
+- Python 3.11
 - OpenAI API Key ([Get here](https://platform.openai.com/api-keys))
 - Pinecone API Key ([Get here](https://www.pinecone.io/))
 
@@ -45,7 +45,7 @@ cd Smart-Document-Q-A-System-using-RAG
 2. **Create a virtual environment:**
 ```bash
 python -m venv myvenv
-source myvenv/bin/activate  # On Windows: myvenv\Scripts\activate
+myvenv\Scripts\activate
 ```
 
 3. **Install dependencies:**

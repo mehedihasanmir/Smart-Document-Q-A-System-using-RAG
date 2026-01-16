@@ -1,14 +1,10 @@
-"""Configuration module for Smart Document Q&A System using RAG with OpenAI and Pinecone."""
-
 import os
 import logging
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
 logger = logging.getLogger(__name__)
-
 
 class Settings:
     """Configuration settings for the application.
